@@ -1,111 +1,118 @@
 console.log("hello TeamSix!")
 
+//creating arrays
+var bfpData = [];
+var ipoutsData = [];
+var eraData = [];
+var gfData = [];
+var soData = [];
+var salaryData = [];
+var counter = 0
 
+//calling the functions
+init();
+data();
+
+///////////////////FUNCTIONS///////////////////
+
+///////////////////dropDownList////////////////
 function init() {
-  // Grab a reference to the dropdown select element
-  var selector = d3.select("#selDataset");
-
-  // Use the list of sample names to populate the select options
-  d3.json("./cleanData/newerData.json").then((data) => {
-    
-    var sampleNames = data.names;
+var selector = d3.select("#selDataset");
+d3.json("./cleanData/newerData.json").then((data) => {
+  var sampleNames = data.names;
+    //print array of options in the dropdown list
     console.log(sampleNames)
 
-    sampleNames.forEach((sample) => {
-      console.log(sample)
-      selector
-        .append("option")
-        .text(sample)
-        .property("value", sample);
-        
-    });
-
-    // Use the first sample from the list to build the initial plots
-    var firstSample = sampleNames[0];
-    buildCharts(firstSample);
-    //buildMetadata(firstSample);
+  sampleNames.forEach((sample) => {
+    console.log(sample)
+    selector
+      .append("option")
+      .text(sample)
+      .property("value", sample);
   });
+});
 }
 
-init();
-
-function optionChanged(newSample) {
-  // Fetch new data each time a new sample is selected
-  //buildMetadata(newSample);
-  buildCharts(newSample);
+/////////////optionChanged Called in HTML//////////
+function optionChanged(attributevalue) {
+      //print statement
+      console.log(attributevalue)
   
+  // if element is undefined use the new id    
+  if(document.getElementsByClassName("js-plotly-plot")[counter] != undefined) {
+   var x = (document.getElementsByClassName("js-plotly-plot")[counter].id)
+    //create a new plotly chart
+    Plotly.purge(x);
+
+    console.log(document.getElementsByClassName("js-plotly-plot")[counter])
+    //keep track of clicks
+    console.log("counter=", counter)
+    counter++
+  }
+
+  //create divs in HTML
+  var inner_div = document.createElement('div');
+  inner_div.class = "plotgraph"
+  inner_div.id = attributevalue
+  document.body.appendChild(inner_div)
+
+  //id for generating chart
+  switch(attributevalue) {
+    case "ERA" : 
+      buildERACharts(eraData);
+      break;
+    case "Batters Faced by Pitcher":
+      buildBFPCharts(bfpData);
+      break;
+    case "Outs Pitched" : 
+      buildIPoutsCharts(ipoutsData);
+      break;
+    case "Games Finished":
+      buildGFCharts(gfData);
+      break;
+    case "Strike Outs":
+      buildSOCharts(soData);
+      break;
+  
+
+    default:
+      // code block
+  }
 }
-
-function buildCharts(sample) {
-  // 2. Use d3.json to load and retrieve the samples.json file 
-  d3.json("./cleanData/newerData.json").then((data) => {
-
-    var sampleData = data.samples;
-    console.log(sampleData)
-    var wfreqData = data.metadata;
-    var filteredSamples = sampleData.filter(sample_id => sample_id.names == sample);
-    //console.log(filteredSamples)
-    var filteredMeta = wfreqData.filter(meta_id => meta_id.id == sample);
-
-    var filteredID = filteredSamples[0];
-    var filteredMetaId = filteredMeta[0];
-   
-
-    var otu_ids = filteredID.otu_ids;
-    var otu_labels = filteredID.otu_labels;
-    var sample_values = filteredID.sample_values;
-    var wfreq = filteredMetaId.wfreq;
-        
-      });
-    }
 
 
 //function to gather data for generating a list
 function data() {
-    d3.json("./cleanData/newerData.json").then((data) => {
-      var allData = data.metadata
-      console.log(allData)
-      generatelist(data.metadata);
-    });
-  }
-  data();
+  d3.json("./cleanData/newerData.json").then((data) => {
+    var allData = data.metadata
+    console.log(allData)
+    generatelist(data.metadata);
+  });
+}
+
 
   //function to create a list of attributes to use for charts
-  function generatelist(allDataHolder) {
-    
-    //creating arrays
-    var bfpData = [];
-    var ipoutsData = [];
-    var eraData = [];
-    var gfData = [];
-    var soData = [];
-    var salaryData = [];
+function generatelist(allDataHolder) {
+  //loop for filtering the attributes
+  for (let i = 0; i < allDataHolder.length; i++) {
 
-    //loop for filtering the attributes
-    for (let i = 0; i < allDataHolder.length; i++) {
-
-        bfpData.push(allDataHolder[i]["Batters Faced by Pitcher"]);
-        ipoutsData.push(allDataHolder[i]["Outs Pitched"]);
-        eraData.push(allDataHolder[i]["ERA"]);
-        gfData.push(allDataHolder[i]["Games Finished"]);
-        soData.push(allDataHolder[i]["Strike Outs"]);
-        salaryData.push(allDataHolder[i]["Salary"]);
-    }
-    //print data in console
-    console.log(bfpData)
-    console.log(ipoutsData)
-    console.log(eraData)
-    console.log(gfData)
-    console.log(soData)
-    console.log(salaryData)
-
-    //diff functions with diff attribute
-    buildBFPCharts(bfpData);
-    buildIPoutsCharts(ipoutsData);
-    buildERACharts(eraData);
-    buildGFCharts(gfData);
-    buildSOCharts(soData);
+      bfpData.push(allDataHolder[i]["Batters Faced by Pitcher"]);
+      ipoutsData.push(allDataHolder[i]["Outs Pitched"]);
+      eraData.push(allDataHolder[i]["ERA"]);
+      gfData.push(allDataHolder[i]["Games Finished"]);
+      soData.push(allDataHolder[i]["Strike Outs"]);
+      salaryData.push(allDataHolder[i]["Salary"]);
+  }
+  //print data in console
+  console.log(bfpData)
+  console.log(ipoutsData)
+  console.log(eraData)
+  console.log(gfData)
+  console.log(soData)
+  console.log(salaryData)
 }
+
+///////////////////chartFUNCTIONS///////////////////
 
 // function for BFP chart
 function buildBFPCharts(attributeBFP) {
@@ -135,10 +142,10 @@ function buildBFPCharts(attributeBFP) {
         height: 700,
       };
     
-      Plotly.newPlot('bubbleBFP',bubbleData, bubbleLayout);
+      Plotly.newPlot('Batters Faced by Pitcher',bubbleData, bubbleLayout);
     })}
 
-    // function for IPouts chart
+// function for IPouts chart
 function buildIPoutsCharts(attributeIPouts) {
   d3.json("./cleanData/newerData.json").then((data) =>{
     var allData = data.metadata
@@ -166,7 +173,7 @@ function buildIPoutsCharts(attributeIPouts) {
         height: 700,
       };
     
-      Plotly.newPlot('bubbleIPouts',bubbleData, bubbleLayout);
+      Plotly.newPlot('Outs Pitched',bubbleData, bubbleLayout);
     })}
 
 // function for ERA chart
@@ -197,7 +204,7 @@ function buildERACharts(attributeERA) {
         height: 700,
       };
     
-      Plotly.newPlot('bubbleERA',bubbleData, bubbleLayout);
+      Plotly.newPlot('ERA',bubbleData, bubbleLayout);
     })}
 
 // function for GF chart    
@@ -228,7 +235,7 @@ function buildGFCharts(attributeGF) {
         height: 700,
       };
     
-      Plotly.newPlot('bubbleGF',bubbleData, bubbleLayout);
+      Plotly.newPlot('Games Finished',bubbleData, bubbleLayout);
     })}
 
 // function for SO chart    
@@ -259,5 +266,5 @@ function buildSOCharts(attributeSO) {
         height: 700,
       };
     
-      Plotly.newPlot('bubbleSO',bubbleData, bubbleLayout);
+      Plotly.newPlot('Strike Outs',bubbleData, bubbleLayout);
     })}

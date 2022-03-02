@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Money Ball 2.0</title>
-<body style="background-image: linear-gradient(90deg, rgb(109, 109, 109), rgb(181, 181, 181))"></body>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
-<body>
+<body style="background-image: linear-gradient(90deg, rgb(189, 189, 189), rgb(74, 74, 74))">
+
   <div class="container" >
         <div class="row">
             <div class="col-md-12 jumbotron text-center" style="color: #417b9a;" >
@@ -28,108 +28,97 @@
             <a href="tableau.html">Tableau</a>
             <a class="active" href="ml.html">Machine Learning</a>
             <a href="database.html">Database</a>
-          </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="static/js/charts.js"></script>
-
-  <!-- <div class='container2'>
-    <div2>
-        <img src='https://user-images.githubusercontent.com/90434559/155923312-84090142-70da-4301-8a35-de2f1469eb2a.png' class='iconDetails'>
-    </div2>  
-<div2 style='margin-left:20px;'>
-    <h4>Random Forest Analysis</h4>
-        <div2 style="font-size:20">
-    <ul>
-        <li>The random forest model was updated with our current data set of 1990-2019 data. Previously, the model had an accuracy score of 52.6%. Once the new data set was uploaded, the accuracy score improved to 62.7%</li>
-        <li>Neural Network Model</li>
-        <li>Polynomial Regression Analysis</li>
-    </ul>
-        </div2>
-<div2 style="float:right;font-size:12">whats the %?</div2>
-</div2>
-</div> -->
-
-<div>
-    <p style="float: left;"><img src="https://user-images.githubusercontent.com/90434559/155923312-84090142-70da-4301-8a35-de2f1469eb2a.png" height="300px" width="300px" border="20px"><hr class="dotted"></p>
-    <p>
-        <h4> <center>Random Forest Analysis</center></h4>
-        <div> <center>
-            The random forest model was updated with our current data set of 1990-2019 data. Previously, the model had an accuracy score of 52.6%. Once the new data set was uploaded, the accuracy score improved to 62.7%
-            <br>
-    
-            </center>
         </div>
-    </p>
-</div>
-<div style="clear: left;">
-    <p style="float: left;"><img src="https://user-images.githubusercontent.com/90434559/155923002-bfc8d932-8bae-45b7-b024-0a0e7a431a2e.png" height="300" width="300" border="20px"></p>
-    <p> <h4> <center>Random Forest Analysis with Binned Age and Salaries</center></h4>
-        <div> <center>
-            <br>
-            In addition to updating the random forest model with the new data set, an attempt was made to improve the accuracy score by also binning the ages. Unfortunately, this did not improve the score and produced a less accurate result of 60.4%
-            <br>
-    
-            </center>
-        </div></p>
-</div>
 
-<div style="clear: left;">
-    <p style="float: left;"><img src="https://raw.githubusercontent.com/Jenny16x/TeamSix/alyssa/neural-network/images/NN1-loss.png" height="300" width="300" border="20px"><hr class="dotted"></p>
-    <p> <h4> <center>Neural Network Model</center></h4>
-        <div> <center>
-            <br>
-            Since neural networks are effective at modeling complex and/or non-linear relationships, we attempted to create a neural network model for our salary-prediction project.
-            <br>
-            <h5>Model Implementation</h5>
-            We initially started by using a regression model on select features, which produced a highly ineffective model with extremely high loss and MSE.
-            </center>
-        </div></p>
-</div>
-<div style="clear: left;">
-    <p style="float: left;"><img src="https://raw.githubusercontent.com/Jenny16x/TeamSix/alyssa/neural-network/images/NN1-MSE.png" height="300" width="300" border="20px"></p>
-</div>
-<div style="clear: left;">
-    <p style="float: left;"><img src="https://raw.githubusercontent.com/Jenny16x/TeamSix/alyssa/neural-network/images/NN2-loss.png" height="300" width="300" border="20px"><hr class="dotted"></p>
-    <p>
-        <div> <center>
-            <br>
-            To improve the model, we decided to peform a log-transformation on the Salary column in order to standardize the salaries in an attempt to help the model work better. We predicted that the wide variation/distribution in salaries for MLB pitchers may have contributed to the initial neural network's poor performance.            <br>
-            <br>
-            Using a log-10 transformation did improve the metrics for the neural network model significantly, however the loss and MSE were still very high- too high to be considered an accurate model.
-            <br>
-        </center>
-        </div></p>
-</div>
-<div style="clear: left;">
-    <p style="float: left;"><img src="https://raw.githubusercontent.com/Jenny16x/TeamSix/alyssa/neural-network/images/NN1-MSE.png" height="300" width="300" border="20px"></p>
-    <p><center>
-    <h5>Results</h5>
-            Due to the poor performance of the neural network model with our dataset, we determined that a neural network model was not well-suited for the purpose of our project.
-            <br>
-            <h5>Benefits & Limitations</h5>
-            Some benefits of using a neural network model would be that they are often effective at modeling complex and non-linear relationships, and can weigh feature significance in a more sophisticated way than standard machine learning models.
-            <br>
-            A few major limitations of this model are:
-            <ul>
-                <li>Neural networks require significant data preprocessing; like a real brain, neural network models are prone to learning 'bad habits' when training, so thorough preprocessing is required to avoid this.</li>
-                <li>Neural networks are highly customizable, so it can be difficult to determine the optimal structure for the neural network. We found that to be the case in our situation- where even after various attempts at optimization, some good and some bad, we were unable to produce an effective neural network model.</li>
-            </ul>
-        </center></p>
-</div>
-<div style="clear: left;">
-    <p style="float: left;"><img src="https://raw.githubusercontent.com/Jenny16x/TeamSix/alyssa/neural-network/images/NN2-loss.png" height="300" width="300" border="20px"><hr class="dotted"></p>
-    <p><h4> <center>Polynomial Regression Analysis</center></h4>
-        <div> <center>
-            <br>
-            Another model we explored using was a polynomial regression analysis. We thought it might perform better than a typical linear regression model given that many of the pitching statistics analyzed were only moderately correlated with pitcher salary. The polynomial regression model attempts to overcome this issue by adding a curvature to what would otherwise be a flat prediction line.            <br>
-            <h5>Benefits and Limitations</h5>
-            Some benefits to polynomial regression are that they work well on any size dataset, and they are effective at analyzing non-linear relationships.
-            <br>
-            Some limitations to this model are that outliers can negatively impact performance, and it can be difficult to determine the optimal polynomial degree for your dataset- and choosing the wrong polynomial degree will result in poor predictive power.
-        </center>
-        </div></p>
+        <style>
+            h1 {text-align: center;}
+            p {text-align: center;}
+            div {text-align: center;}
+        </style>
+
+        <div>
+            <p style="float: left;"><img src="https://user-images.githubusercontent.com/90434559/155923312-84090142-70da-4301-8a35-de2f1469eb2a.png" height="300px" width="300px"><hr class="dotted"></p>
+            <p>
+                <h4> Random Forest Analysis</h4>
+                <div>
+                    The random forest model was updated with our current data set of 1990-2019 data. Previously, the model had an accuracy score of 52.6%. Once the new data set was uploaded, the accuracy score improved to 62.7%
+                    <br>
+                </div>
+            </p>
+        </div>
+        <div style="clear: left;">
+            <p style="float: left;"><img src="https://user-images.githubusercontent.com/90434559/155923002-bfc8d932-8bae-45b7-b024-0a0e7a431a2e.png" height="300" width="300"></p>
+            <p> <h4> Random Forest Analysis with Binned Age and Salaries</h4>
+                <div> 
+                    <br>
+                    In addition to updating the random forest model with the new data set, an attempt was made to improve the accuracy score by also binning the ages. Unfortunately, this did not improve the score and produced a less accurate result of 60.4%
+                    <br>
+                </div></p>
+        </div>
+
+        <div style="clear: left;">
+            <p style="float: left;"><img src="https://raw.githubusercontent.com/Jenny16x/TeamSix/alyssa/neural-network/images/NN1-loss.png" height="300" width="300"><hr class="dotted"></p>
+            <p> <h4> Neural Network Model</h4>
+                <div> 
+                    <br>
+                    Since neural networks are effective at modeling complex and/or non-linear relationships, we attempted to create a neural network model for our salary-prediction project.
+                    <br>
+                    <h5>Model Implementation</h5>
+                    We initially started by using a regression model on select features, which produced a highly ineffective model with extremely high loss and MSE.
+                    
+                </div></p>
+        </div>
+        <div style="clear: left;">
+            <p style="float: left;"><img src="https://raw.githubusercontent.com/Jenny16x/TeamSix/alyssa/neural-network/images/NN1-MSE.png" height="300" width="300"></p>
+        </div>
+        <div style="clear: left;">
+            <p style="float: left;"><img src="https://raw.githubusercontent.com/Jenny16x/TeamSix/alyssa/neural-network/images/NN2-loss.png" height="300" width="300"><hr class="dotted"></p>
+            <p>
+                <div> 
+                    <br>
+                    To improve the model, we decided to peform a log-transformation on the Salary column in order to standardize the salaries in an attempt to help the model work better. We predicted that the wide variation/distribution in salaries for MLB pitchers may have contributed to the initial neural network's poor performance.            <br>
+                    <br>
+                    Using a log-10 transformation did improve the metrics for the neural network model significantly, however the loss and MSE were still very high- too high to be considered an accurate model.
+                    <br>
+            
+                </div></p>
+        </div>
+        <div style="clear: left;">
+            <p style="float: left;"><img src="https://raw.githubusercontent.com/Jenny16x/TeamSix/alyssa/neural-network/images/NN1-MSE.png" height="300" width="300"></p>
+            <p>
+            <h5>Results</h5>
+                    Due to the poor performance of the neural network model with our dataset, we determined that a neural network model was not well-suited for the purpose of our project.
+                    <br>
+                    <h5>Benefits & Limitations</h5>
+                    Some benefits of using a neural network model would be that they are often effective at modeling complex and non-linear relationships, and can weigh feature significance in a more sophisticated way than standard machine learning models.
+                    <br>
+                    A few major limitations of this model are:
+                    <br>
+                    <br>
+                    <ul>
+                        <li>Neural networks require significant data preprocessing; like a real brain, neural network models are prone to learning 'bad habits' when training, so thorough preprocessing is required to avoid this.</li>
+                        <br>
+                        <li>Neural networks are highly customizable, so it can be difficult to determine the optimal structure for the neural network. We found that to be the case in our situation- where even after various attempts at optimization, some good and some bad, we were unable to produce an effective neural network model.</li>
+                    </ul>
+                </p>
+        </div>
+        <div style="clear: left;">
+            <p style="float: left;"><img src="https://raw.githubusercontent.com/Jenny16x/TeamSix/alyssa/neural-network/images/NN2-loss.png" height="300" width="300"><hr class="dotted"></p>
+            <p><h4> Polynomial Regression Analysis</h4>
+                <div> 
+                    <br>
+                    Another model we explored using was a polynomial regression analysis. We thought it might perform better than a typical linear regression model given that many of the pitching statistics analyzed were only moderately correlated with pitcher salary. The polynomial regression model attempts to overcome this issue by adding a curvature to what would otherwise be a flat prediction line.            <br>
+                    <h5>Benefits and Limitations</h5>
+                    Some benefits to polynomial regression are that they work well on any size dataset, and they are effective at analyzing non-linear relationships.
+                    <br>
+                    Some limitations to this model are that outliers can negatively impact performance, and it can be difficult to determine the optimal polynomial degree for your dataset- and choosing the wrong polynomial degree will result in poor predictive power.
+            
+                </div></p>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="static/js/charts.js"></script>
+
 </div>
 
 
